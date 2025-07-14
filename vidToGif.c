@@ -37,4 +37,20 @@ int main(int argc, char *argv[]) {
 	fprintf(stderr, "Failed to find video stream\n");
 	return -1;
     }
+
+    //get codec parameters
+    AVCodecParameters *codecpar = format_ctx->streams[video_stream_index]->codecpar;
+    AVCodec *codec = avcodec_find_decoder(codecpar->codec_id);
+    if (!codec) {
+	fprintf(stderr, "Unsupported codec\n");
+	return -1;
+    }
+
+    //set up codec context
+    AVCodecContext = *codecContext = avcodec_alloc_context3(codec);
+    avcodec_parameters_to_context(codecContext, codecpar);
+    if (avcodec_open2(codecContext, codec, NULL) < 0) {
+	fprintf(stderr, "Could not open codec\n");
+	return -1;
+    }
 }
