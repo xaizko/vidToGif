@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
     }
 
     //set up codec context
-    AVCodecContext = *codecContext = avcodec_alloc_context3(codec);
+    AVCodecContext *codecContext = avcodec_alloc_context3(codec);
     avcodec_parameters_to_context(codecContext, codecpar);
     if (avcodec_open2(codecContext, codec, NULL) < 0) {
 	fprintf(stderr, "Could not open codec\n");
