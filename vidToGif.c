@@ -54,5 +54,12 @@ int main(int argc, char *argv[]) {
 	return -1;
     }
 
+    //allocate frames
+    AVFrame *frame = av_frame_alloc();
+    AVFrame *frameRGB = av_frame_alloc();
+    if (!frame || !frameRGB) {
+	fprintf(stderr, "Could not allocate frame\n");
+	return -1;
+    }
 
 }
