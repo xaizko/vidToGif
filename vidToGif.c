@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 
     //get codec parameters
     AVCodecParameters *codecpar = format_ctx->streams[video_stream_index]->codecpar;
-    AVCodec *codec = avcodec_find_decoder(codecpar->codec_id);
+    const AVCodec *codec = avcodec_find_decoder(codecpar->codec_id);
     if (!codec) {
 	fprintf(stderr, "Unsupported codec\n");
 	return -1;
@@ -53,4 +53,6 @@ int main(int argc, char *argv[]) {
 	fprintf(stderr, "Could not open codec\n");
 	return -1;
     }
+
+
 }
