@@ -62,4 +62,10 @@ int main(int argc, char *argv[]) {
 	return -1;
     }
 
+    int width = context->width;
+    int height = context->height;
+    int numBytes = av_image_get_buffer_size(AV_PIX_FMT_RGB24, width, height, 1);
+    uint8_t *buffer=  (uint8_t *)av_malloc(numBytes * sizeof(uint8_t));
+
+    av_image_fill_arrays(frameRGB->data, frameRGB->linesize, buffer, AV_PIX_FMT_RGB24, width, height, 1);
 }
