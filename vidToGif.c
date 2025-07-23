@@ -6,3 +6,9 @@ int main(int argc, char *argv[]) {
     }
 }
 
+bool is_supported_file(const char *filename) {
+    const char *dot = strrchr(filename, '.');
+    if (!dot) return false;
+
+    return strcmp(dot, ".mp4") == 0 || strcmp(dot, ".mov") == 0;
+}
